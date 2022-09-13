@@ -84,3 +84,9 @@ C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\o
 C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.csproj.CopyComplete
 C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.dll
 C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.pdb
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaEntidad.dll
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaNegocio.dll
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaDatos.dll
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaEntidad.pdb
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaNegocio.pdb
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaDatos.pdb

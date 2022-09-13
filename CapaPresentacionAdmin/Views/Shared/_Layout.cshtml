@@ -39,11 +39,11 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Resumen</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("Index","Home")">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("Usuarios","Home")">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             Usuarios
                         </a>
@@ -91,16 +91,16 @@
             </nav>
         </div>*@
                         <div class="sb-sidenav-menu-heading">Mantenimiento</div>
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="@Url.Action("Categoria","Mantenedor")">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Categorias
                         </a>
                         
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="@Url.Action("Marca","Mantenedor")">
                             <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
                             Marcas
                         </a>
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="@Url.Action("Producto","Mantenedor")">
                             <div class="sb-nav-link-icon"><i class="fas fa-boxes"></i></div>
                             Productos
                         </a>
@@ -133,13 +133,7 @@
         </div>
     </div>
 
-    @*
-
-        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-        <li>@Html.ActionLink("Pagina Test", "PaginaTest", "Home")</li>*@
-
+    
 
 
 
