@@ -12,9 +12,12 @@ IDE: 					Visual Studio 2019
 Tecnologías:			.NET Framework 4.7.2
 						C#
 						SQL SERVER
-						BOOTSTRAP 5.1.2, 
+						BOOTSTRAP 5.1.2, (nuget)
 						ADO.NET, 
-						FONT.AWESOME 5.15.4
+						FONT.AWESOME 5.15.4(nuget)
+						DATATABLES 1.10.15(nuget)
+						jquery loadingoverlar
+						SweetAlert for Bootstrap(nuget)
 						
 						
 Arquitectura:			ASP .Net MVC 5<br><br>
@@ -56,3 +59,15 @@ Pass:
 Plantillas de bootstrap:	template admin:		https://startbootstrap.com/template/sb-admin
 							template tienda:	https://startbootstrap.com/template/shop-homepage	
 												https://startbootstrap.com/template/shop-item
+												
+							encrypting				https://emn178.github.io/online-tools/sha256.html		
+							datatables				https://datatables.net/examples/ajax/index.html							
+							bootstrap 5.0 			https://getbootstrap.com/docs/5.0/components
+							jquery loadingoverlar 	https://gasparesganga.com/labs/jquery-loading-overlay/
+							SweetAlert for Bootstrap		https://lipis.github.io/bootstrap-sweetalert/
+							
+							
+							
+							
+							
+							
