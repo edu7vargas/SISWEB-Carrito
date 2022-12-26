@@ -18,11 +18,16 @@ namespace CapaEntidad
 
         public Marca oMarca { get; set; }
 
+        public string DescMarca { get; set; }
 
         public Categoria oCategoria { get; set; }
 
+        public string DescCategoria { get; set; }
+
 
         public decimal Precio { get; set; }
+
+        public string PrecioTexto { get; set; }
 
 
         public int Stock { get; set; }
@@ -35,6 +40,11 @@ namespace CapaEntidad
 
 
         public bool Activo { get; set; }
+
+        public string Base64 { get; set; }
+
+        public string Extension { get; set; }
+
 
 
 

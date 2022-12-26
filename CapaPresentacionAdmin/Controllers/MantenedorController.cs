@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,6 +10,7 @@ using System.Web.Mvc;
 
 using CapaEntidad;
 using CapaNegocio;
+using Newtonsoft.Json;
 
 namespace CapaPresentacionAdmin.Controllers
 {
@@ -173,6 +177,162 @@ namespace CapaPresentacionAdmin.Controllers
         #endregion
 
 
+
+
+
+
+
+        // ************* PRODUCTO *************
+
+        #region PRODUCTO
+        [HttpGet]
+        public JsonResult ListarProductos()
+        {
+
+            List<Producto> oLista = new List<Producto>();
+
+            oLista = new CN_Producto().Listar();
+
+            return Json(new { data = oLista, status = true, message = "" }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public JsonResult GuardarProducto(string objeto,HttpPostedFileBase archivoImagen)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+            bool status = false;
+            bool guardar_imagen_exitoso = true;
+
+
+            // convertir string en objeto producto
+            Producto oProducto = new Producto();
+            oProducto = JsonConvert.DeserializeObject<Producto>(objeto);
+
+
+            // Validar Precio
+            decimal precio;
+            if (decimal.TryParse(oProducto.PrecioTexto, System.Globalization.NumberStyles.AllowDecimalPoint, new CultureInfo("es-PE"), out precio))
+            {
+                oProducto.Precio = precio;
+            }
+            else {
+                return Json(new { status = false, mensaje = "El formato del precio debe ser ##.##" },JsonRequestBehavior.AllowGet);
+            }
+
+
+            if (oProducto.IdProducto == 0)
+            {
+                resultado = new CN_Producto().Registrar(oProducto, out mensaje);
+                if ((int)resultado > 0)
+                {
+                    // NO hay ninguna validación pendiente de la CAPA DE NEGOCIOS
+                    status = true;
+                    oProducto.IdProducto = (int)resultado;
+                }
+            }
+            else
+            {
+                resultado = new CN_Producto().Editar(oProducto, out mensaje);
+                if ((bool)resultado == true)
+                {
+                    // NO hay ninguna validación pendiente de la CAPA DE NEGOCIOS
+                    status = true;
+                }
+            }
+
+
+
+            if (status)
+            {
+                if (archivoImagen != null)
+                {
+                    string ruta_guardar = ConfigurationManager.AppSettings["ServidorFotos"];
+                    string extension = Path.GetExtension(archivoImagen.FileName);
+                    string nombre_imagen = string.Concat(oProducto.IdProducto.ToString(), extension);
+                   
+                    try {
+                        archivoImagen.SaveAs(Path.Combine(ruta_guardar, nombre_imagen));
+                        
+                    }
+                    catch (Exception ex) {
+
+                        mensaje = ex.Message.ToString();
+                        guardar_imagen_exitoso = false;
+                    }
+
+
+                    if (guardar_imagen_exitoso)
+                    {
+                        oProducto.RutaImagen = ruta_guardar;
+                        oProducto.NombreImagen = nombre_imagen;
+                        status = new CN_Producto().GuardarDatosImagen(oProducto, out mensaje);
+
+                    }
+                    else {
+
+                        mensaje = "Se guardo el producto, pero hay problemas con la imagen";
+                    }
+
+
+                }
+            
+            }
+
+
+            return Json(new { data = oProducto, status = status, message = mensaje }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        private object Json()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public JsonResult EliminarProducto(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+            respuesta = new CN_Producto().Eliminar(id, out mensaje);
+
+            Marca data = new Marca();// envio un usuario vacio para 
+
+            return Json(new { data = data, status = respuesta, message = mensaje }, JsonRequestBehavior.AllowGet);
+
+        }
+
+
+        [HttpPost]
+        public JsonResult ImagenProducto(int id) {
+
+            bool conversion;
+            Producto oProducto = new CN_Producto().Listar().Where(p => p.IdProducto == id).FirstOrDefault();
+
+            string textoBase64 = CN_Recursos.ConvertirBase64(Path.Combine(oProducto.RutaImagen,oProducto.Nombre), out conversion);
+
+
+            return Json(new 
+                { 
+                    conversion = conversion,
+                    textobase64 = textoBase64,
+                    extension = Path.GetExtension(oProducto.NombreImagen)
+                },
+                JsonRequestBehavior.AllowGet
+            
+            );
+
+        }
+
+
+
+
+        #endregion
 
 
     }
