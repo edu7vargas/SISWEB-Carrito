@@ -51,7 +51,7 @@
             </div>
             <div class="modal-body">
 
-                <input type="text" id="txtid" value="0" />
+                <input type="hidden" id="txtid" value="0" />
 
 
                 <div class="row g-2">
@@ -264,7 +264,7 @@
                     if (Categoria.IdCategoria == 0) { // GUARDAR NUEVO USUARIO
 
                         if (data.status) { // Guarda el usuario
-                            Categoria.IdCategoria = data.data;
+                            Categoria.IdCategoria = data.data.IdCategoria;
                             tabladata.row.add(Categoria).draw(false);
                             $("#FormModal").modal("hide");
                             $(".modal-body").LoadingOverlay("hide");

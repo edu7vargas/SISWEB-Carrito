@@ -66,6 +66,7 @@ namespace CapaPresentacionAdmin.Controllers
                 {
                     // NO hay ninguna validación pendiente de la CAPA DE NEGOCIOS
                     status = true;
+                    oCategoria.IdCategoria = (int)resultado;
                 }
             }
             else
@@ -314,7 +315,7 @@ namespace CapaPresentacionAdmin.Controllers
             bool conversion;
             Producto oProducto = new CN_Producto().Listar().Where(p => p.IdProducto == id).FirstOrDefault();
 
-            string textoBase64 = CN_Recursos.ConvertirBase64(Path.Combine(oProducto.RutaImagen,oProducto.Nombre), out conversion);
+            string textoBase64 = CN_Recursos.ConvertirBase64(Path.Combine(oProducto.RutaImagen,oProducto.NombreImagen), out conversion);
 
 
             return Json(new 

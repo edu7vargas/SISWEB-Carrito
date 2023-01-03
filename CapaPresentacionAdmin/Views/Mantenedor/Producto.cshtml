@@ -57,7 +57,7 @@
             </div>
             <div class="modal-body">
 
-                <input type="text" id="txtid" value="0" />
+                <input type="hidden" id="txtid" value="0" />
 
 
                 <form class="row" id="contenedor">
@@ -360,6 +360,44 @@
                 $("#cboactivo").val(json.Activo == true ? 1 : 0);
                 $("#cbomarca").val(json.oMarca.IdMarca);
                 $("#cbocategoria").val(json.oCategoria.IdCategoria);
+                debugger;
+
+                console.log("ID PRODUCTO::::::::::::::::::",json.IdProducto);
+
+                  jQuery.ajax({
+                    url: '@Url.Action("ImagenProducto", "Mantenedor")',
+                      type: "POST",
+                      data: JSON.stringify({ id: json.IdProducto }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data)
+                    {
+                        $("#img_producto").LoadingOverlay("hide");
+                        if (data.conversion)
+                        {
+                            $("#img_producto").attr({ "src": "data:image/" + data.extension + ";base64," + data.textobase64})
+                        }
+                        console.log(data);
+                       
+
+                    },
+                    error: function (error)
+                    {
+                        console.log(error);
+                        $("#img_producto").LoadingOverlay("hide");
+
+                        $("#mensajeError").show();
+                        $("#mensajeError").text("Error al mostrar imagen.");
+
+
+                    },
+                    beforeSend: function()
+                    {
+                        $("#img_producto").LoadingOverlay("show");
+                    }
+                });
+
+
             }
 
             $("#FormModal").modal("show");
@@ -383,14 +421,14 @@
 
         $("#tabla tbody").on("click", ".btn-eliminar", function () {
 
-            var usuarioSeleccionada = $(this).closest("tr");
-            var data = tabladata.row(usuarioSeleccionada).data();
+            var productoSeleccionado = $(this).closest("tr");
+            var data = tabladata.row(productoSeleccionado).data();
             //console.log(data);
             // abrirModal(data);
 
             swal({
                 title: "¿Estas seguro?",
-                text: "¿Desea eliminar la Marca?",
+                text: "¿Desea eliminar el Producto?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-primary",
@@ -403,8 +441,8 @@
 
                 jQuery.ajax({
                         url: '@Url.Action("EliminarProducto", "Mantenedor")',
-                        type: "POST",
-                        data: JSON.stringify({ id: data.IdMarca }),
+                    type: "POST",
+                        data: JSON.stringify({ id: data.IdProducto }),
                         dataType: "json",
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
@@ -413,7 +451,7 @@
                             // Se ejecuto correctamente la operación de eliminar
                             if (data.status){
 
-                                    tabladata.row(usuarioSeleccionada).remove().draw();
+                                    tabladata.row(productoSeleccionado).remove().draw();
                                     swal("Buen trabajo", "Se ha realizado exitosamente la operación", "success");
 
                                 } else {
@@ -456,12 +494,12 @@
                 Nombre: $("#txtnombre").val(),
                 Descripcion: $("#txtdescripcion").val(),
                 oMarca: {
-                    IdMarca: $("#cbomarca").val(),
-                    Descripcion: $("#cbomarca").text()
+                    IdMarca: $("#cbomarca option:selected").val(),
+                    Descripcion: $("#cbomarca option:selected").text()
                 },
                 oCategoria: {
-                    IdCategoria: $("#cbocategoria").val(),
-                    Descripcion: $("#cbocategoria").text()
+                    IdCategoria: $("#cbocategoria option:selected").val(),
+                    Descripcion: $("#cbocategoria option:selected").text()
                 },
                 PrecioTexto: $("#txtprecio").val(),
                 Precio: $("#txtprecio").val(),
@@ -481,42 +519,45 @@
                 dataType: "json",
                 contentType: false,
                 success: function (data) {
+
+                    $(".modal-body").LoadingOverlay("hide");
                     
+                    
+                    debugger;
+                    if (Producto.IdProducto == 0) { // GUARDAR NUEVO PRODUCTO
 
-                    if (Producto.IdProducto == 0) { // GUARDAR NUEVO USUARIO
-
-                        if (data.status) { // Guarda el usuario
-                            Producto.IdProducto = data.IdProducto;
+                        if (data.status) { // Guarda el producto
+                            console.log("DATA :::", data);
+                            Producto.IdProducto = data.data.IdProducto;
                             tabladata.row.add(Producto).draw(false);
                             $("#FormModal").modal("hide");
-                            $(".modal-body").LoadingOverlay("hide");
+                            // $(".modal-body").LoadingOverlay("hide");
                             swal("Buen trabajo", "Se ha realizado exitosamente la operación", "success");
                         } else {
-                            $(".modal-body").LoadingOverlay("hide");
+                            // $(".modal-body").LoadingOverlay("hide");
                             $("#mensajeError").text(data.message);
                             $("#mensajeError").show();
                         }
                     }
 
-                    else {// GUARDAR USUARIO EXISTENTE(editar)
+                    else {// GUARDAR PRODUCTO EXISTENTE(editar)
 
-                        if (data.status) {// Guardó el usuario
+                        if (data.status) {// Guardó el producto
                             tabladata.row(filaSeleccionada).data(Producto).draw(false);
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");
-                            $(".modal-body").LoadingOverlay("hide");
+                            // $(".modal-body").LoadingOverlay("hide");
                             swal("Buen trabajo", "Se ha realizado exitosamente la operación", "success");
                         } else {
-                            $(".modal-body").LoadingOverlay("hide");
+                            // $(".modal-body").LoadingOverlay("hide");
                             $("#mensajeError").text(data.message);
                             $("#mensajeError").show();
 
                         }
                     }
 
-
-
-                }, error: function (data) {
+                }, 
+                error: function (data) {
                     $("#mensajeError").text("Error Ajax");
                     $("#mensajeError").show();
                     $(".modal-body").LoadingOverlay("hide");
