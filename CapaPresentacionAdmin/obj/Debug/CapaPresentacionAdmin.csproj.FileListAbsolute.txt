@@ -90,3 +90,11 @@ C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\b
 C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaEntidad.pdb
 C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaNegocio.pdb
 C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\CapaDatos.pdb
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\ClosedXML.dll
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\DocumentFormat.OpenXml.dll
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\ExcelNumberFormat.dll
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\System.IO.Packaging.dll
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\ClosedXML.pdb
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\ClosedXML.xml
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\DocumentFormat.OpenXml.xml
+C:\PROYECTOS_SW\personales\SISWEB-Carrito\SISWEB-Carrito\CapaPresentacionAdmin\bin\ExcelNumberFormat.xml

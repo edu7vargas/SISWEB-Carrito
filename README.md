@@ -18,7 +18,8 @@ Tecnologías:			.NET Framework 4.7.2
 						DATATABLES 1.10.15(nuget)
 						jquery loadingoverlar
 						SweetAlert for Bootstrap(nuget)
-						
+						JQUERY.UI 1.12.1.1
+						ClosedXML 0.95.4
 						
 Arquitectura:			ASP .Net MVC 5<br><br>
 
