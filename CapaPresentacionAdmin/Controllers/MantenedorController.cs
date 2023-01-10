@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace CapaPresentacionAdmin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class MantenedorController : Controller
     {
         // GET: Mantenedor
