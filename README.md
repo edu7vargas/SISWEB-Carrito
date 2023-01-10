@@ -69,6 +69,11 @@ Plantillas de bootstrap:	template admin:		https://startbootstrap.com/template/sb
 							
 							
 							
-							
+		
+
+
+## ACCESO:
+Usuario: edu7vargas@gmail.com
+Contraseña: Sistemas123 (2c1048da3d3c4ba9a85047fab54e3f79be4871e90509a835be80ae4963edce31)
 							
 							

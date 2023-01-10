@@ -20,6 +20,7 @@ namespace CapaNegocio
             return clave;
         }
 
+        //encriptación DE TEXTO en SHA256
         public static string ConvertSha256(string texto)
         {
             StringBuilder Sb = new StringBuilder();
