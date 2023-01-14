@@ -77,3 +77,14 @@ Usuario: edu7vargas@gmail.com
 Contraseña: Sistemas123 (2c1048da3d3c4ba9a85047fab54e3f79be4871e90509a835be80ae4963edce31)
 							
 							
+							
+							
+## Configuración para el envio de correo:
+-- Esto esta realizado con la desde la cuenta de "edu7vargas@gmail.com", 
+<gestionar tu cuenta google>/<Seguridad>/Sección <Acceso a google>/<Contraseña de aplicaciones>
+
+
+
+## Pare tener correos temporales para la creación de USUARIOS y CLIENTES.
+							
+							
