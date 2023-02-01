@@ -41,3 +41,61 @@
 </section>
 
 
+@section scripts{
+
+    <script>
+        $(document).on("click", "button.agregarcarrito", function () {
+
+            // console.log($(this).data("idproducto"));
+
+            jQuery.ajax({
+                url: "@Url.Action("AgregarCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto: $(this).data("idproducto") }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.data) {
+
+                        MostrarCantidadCarrito();
+
+                        @*swal({
+                            title: "Agregado al carrito",
+                            text: "¿Desea ir al carrito?",
+                            type: "success",
+                            showCancelButton: true,
+                            confirmButtonClass: "btn-primary",
+                            confirmButtonText: "Si",
+                            cancelButtonText: "No",
+                            closeOnConfirm: true
+                        },
+                            function () {
+                                window.location.href = '@Url.Action("Carrito","Tienda")'
+                        });*@
+
+                        swal("", "Agregando al carrito", "success");
+                    } else {
+
+                        swal("", data.message,"warning");
+
+                    }
+                    //$("#cantidadcarrito").text(data.data);
+
+
+
+                },
+                beforeSend: function () {
+                    //$("#contenedor_categoria").LoadingOverlay("show");
+                }
+
+            });
+
+
+        });
+
+
+    </script>
+
+
+}
+
